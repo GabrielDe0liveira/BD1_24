@@ -1,0 +1,16 @@
+CREATE DATABASE SIS2402;
+
+USE SIS2402;
+
+CREATE TABLE CLIENTES (
+    nome VARCHAR(50) PRIMARY KEY,
+    email VARCHAR(50),
+    dob DATE,
+    CEP VARCHAR(10),
+    rua VARCHAR(50),
+    numero INT,
+    bairro VARCHAR(50),
+    cidade VARCHAR(50),
+    UF VARCHAR(2),
+    pais VARCHAR(50)
+);
