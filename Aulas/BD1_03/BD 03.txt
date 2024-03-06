@@ -1,0 +1,77 @@
+-- Criar um novo banco
+CREATE DATABASE GREENHOUSE;
+
+--Utilizar nova DB
+use GREENHOUSE;
+
+--Criando tabelas
+
+CREATE TABLE `GREENHOUSE`.`PLANTS`*(
+	`PLANT_NAME` CHAR(30) NOT NULL,
+	`SENSOR_VALUE` FLOAT DEFAULT NULL,
+	`SENSOR_EVENT` TIMESTAM NOT NULL,
+	    DEFAULT CURRENT_TIMESTAMP ON
+	    UPDATE CURRENT_TIMESTAMP,
+	`SENSOR_LEVEL` CHAR(5) DEFAULT NULL
+	PRIMARY KEY `PK_PLANT_NAME` (`PLANT_NAME`)
+);
+
+--COMANDOS DML DE INSERÇÃO
+
+INSERT INTO `GREENHOUSE`.`PLANTS`
+(`PLANT_NAME`, `SENSOR_VALUE`, `SENSOR_LEVEL`)
+VALUES('Orquidea', '10', 'HIGH');
+VALUES('Samambaia', '11', 'LOW');
+VALUES('Babosa', '12', 'HIGH');
+VALUES('Palmeira', '5', 'LOW');
+VALUES('Coqueiro', '8', 'HIGH');
+VALUES('Orquidea rosa', '9', 'MED');
+VALUES('Purple Kush', '12', 'HIGH');
+VALUES('Pinheiro', '10', 'LOW');
+VALUES('Canhamo', '420', 'HIGH');
+VALUES('Lemon Haze', '14', 'MED');
+
+--EXECUTANDO COMANDO DQL - SELECT
+--Consultando tudo da tabela
+
+SELECT * FROM `GREENHOUSE`.`PLANTS`;
+
+--especificando apenas as colunas desejadas
+SELECT `PLANT_NAME`,`SENSOR_EVENT`
+FROM PLANTS;
+
+--Aplicar filtros nos registros de dados
+SELECT * FROM PLANTS WHERE SENSOR_LEVEL = 'HIGH'
+AND SENSOR_VALUE >= 10 AND SENSOR_LEVEL <= 20;
+
+SELECT * 
+FROM PLANTS
+WHERE SENSOR_LEVEL IN ('HIGH','LOW');
+
+--Clausula de ordenação
+SELECT *
+FROM PLANTS
+WHERE SENSOR_VALUE < 420
+ORDER BY SENSOR_VALUE DESC;
+
+-Funções de agrupamento
+SELECT COUNT(*), SENSOR LEVEL
+FROM PLANTS
+GROUP BY SENSOR_LEVEL;
+---------------------------------------------------------------------------------------------------------------
+
+--SQL SELECT TOP
+SELECT *
+FROM PLANTS
+WHERE SENSOR_VALUE < 1000
+LIMIT 3;
+
+
+SELECT * 
+FROM PLANTS
+WHERE SENSOR_VALUE < 420
+ORDER BY SENSOR_VALUE DESC;
+
+SELECT MIN (SENSOR_LEVEL)
+FROM `GREENHOUSE`.`PLANTS`
+WHERE SENSOR_VALUE
